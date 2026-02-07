@@ -10,6 +10,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("carts Service is running ");
 });
-app.use("/api/v1", cartRouter);
+app.use("/api/cart", cartRouter);
 connectDB();
 export default app;

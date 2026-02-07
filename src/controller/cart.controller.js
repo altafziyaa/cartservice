@@ -2,24 +2,23 @@ import cartService from "../service/cart.service.js";
 
 class cartController {
   async addToCart(req, res, next) {
-    const { product } = req.body;
-    const { userId } = req.user;
-
     try {
-      if (!userId)
-        return res.status(400).json({ message: "user id not valid" });
-      if (!product)
-        return res.status(400).json({ message: "product not exist" });
+      const { productId } = req.body;
+      const { userId } = req.user;
 
-      const addCart = await cartService.addToCart({ userId, product });
+      if (!productId) {
+        return res.status(400).json({ message: "productId required" });
+      }
 
-      return res.status(200).json({
+      const cart = await cartService.addToCart({ userId, productId });
+
+      res.status(200).json({
         success: true,
-        message: "product added to cart successfully",
-        addCart,
+        message: "Product added to cart",
+        cart,
       });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

@@ -7,7 +7,9 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.send("carts Service is running ");
+});
 app.use("/api/v1", cartRouter);
 connectDB();
 export default app;

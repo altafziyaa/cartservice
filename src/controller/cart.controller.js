@@ -2,8 +2,8 @@ import cartService from "../service/cart.service.js";
 
 class cartController {
   async addToCart(req, res, next) {
-    const { userId, product } = req.body;
-    // JWT version: const { userId } = req.user;
+    const { product } = req.body;
+    const { userId } = req.user;
 
     try {
       if (!userId)

@@ -25,7 +25,7 @@ class cartController {
 
   async updateCartQuantity(req, res, next) {
     const { productId, quantity } = req.body;
-    const { userId } = req.user; // ✅ FIXED
+    const { userId } = req.user;
 
     try {
       const updateCart = await cartService.updateCartQuantity({
@@ -46,7 +46,7 @@ class cartController {
 
   async removeFromCart(req, res, next) {
     const { productId } = req.body;
-    const { userId } = req.user; // ✅ FIXED
+    const { userId } = req.user;
 
     try {
       const removeCarts = await cartService.removeFromCart({
@@ -65,7 +65,7 @@ class cartController {
   }
 
   async clearCart(req, res, next) {
-    const { userId } = req.user; // ✅ FIXED
+    const { userId } = req.user;
 
     try {
       const clearFromCart = await cartService.clearCart(userId);
